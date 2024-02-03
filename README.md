@@ -103,6 +103,25 @@
 └── vite.config.ts                    vite配置
 ```
 
+## 工程配置
+
+```bash
+# 克隆项目
+git clone https://github.com/pandax-6646/uniapp-vue3-components
+
+# 进入项目目录
+cd uniapp-vue3-components
+
+# 安装依赖
+npm install
+
+# 启动代码提交校验
+npm run postinstall
+
+# 启动服务
+npm run dev
+```
+
 ## 常见问题
 
 ### vetur 提示组件引入报错
