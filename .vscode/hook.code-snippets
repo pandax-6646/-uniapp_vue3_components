@@ -1,0 +1,65 @@
+{
+  "Vue3 Hook 代码结构一键生成": {
+    "prefix": "Vue3 Hook",
+    "body": [
+      "import { ref } from \"vue\"\n",
+      "const refName1 = ref<string>(\"这是一个响应式变量\")\n",
+      "export function useHookName() {",
+      "\tconst refName2 = ref<string>(\"这是一个响应式变量\")\n",
+      "\tconst fnName = () => {}\n",
+      "\treturn { refName1, refName2, fnName }",
+      "}",
+      "$1"
+    ],
+    "description": "Vue3 Hook"
+  },
+
+  "init Component": {
+    "prefix": "c",
+    "body": [
+      "<template>",
+      "  <div>$1</div>",
+      "</template>\n",
+      "<script setup lang=\"ts\">",
+      "const props = defineProps({",
+      "  //value: {",
+      "  //  type: String,",
+      "  //  default: ''",
+      "  //},",
+      "})",
+      "</script>\n",
+      "<style scoped lang=\"scss\"></style>\n"
+    ],
+    "description": "组件模板"
+  },
+
+  "init Api": {
+    "prefix": "a",
+    "body": [
+      "import axios from '@/utils/axios'\n",
+      "const api$1 = {",
+      "  get$1: (data = {}) => axios.get('/$2', data),",
+      "}\n",
+      "export default api$1\n"
+    ],
+    "description": "接口模板"
+  },
+  "init Store": {
+    "scope": "typescript",
+    "prefix": "s",
+    "body": [
+      "export default defineStore({",
+      "  id: '$2',",
+      "  persist: {",
+      "    enabled: true,",
+      "  },",
+      "  state: () => {",
+      "    return {$3}",
+      "  },",
+      "  getters: {$4},",
+      "  actions: {$5},",
+      "})\n"
+    ],
+    "description": "状态管理模板"
+  }
+}

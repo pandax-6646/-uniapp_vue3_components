@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "vue.volar",
+    "stylelint.vscode-stylelint",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "sdras.vue-vscode-snippets",
+    "uni-helper.uni-app-snippets-vscode",
+    "EditorConfig.EditorConfig"
+  ]
+}
