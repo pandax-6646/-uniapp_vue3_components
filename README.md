@@ -122,13 +122,14 @@ npm run postinstall
 npm run dev
 ```
 
-## vs code配置
+## 代码编辑器配置
 
-**json文件的注释提示：**
+**vs code 放开部分json文件的注释功能：**
 
-需要在用户的 setting.json　文件中添加如下配置
+
 
 ```json
+// 需要在用户的 setting.json 添加
 {
   "files.associations": {
     "manifest.json": "jsonc",
@@ -137,6 +138,10 @@ npm run dev
   }
 }
 ```
+
+**运行调试 app，提示 HBuilderX 版本和手机 sdk 版本不匹配：**
+
+项目依赖的 sdk 3.99 版本，检查 HBuilderX 版本不一致则需要 [下载HBuilderX 3.99 版本](https://hx.dcloud.net.cn/Tutorial/HistoryVersion)
 
 ## 常见问题
 

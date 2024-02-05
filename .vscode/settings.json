@@ -5,8 +5,5 @@
     "source.fixAll.stylelint": "explicit"
   },
   "stylelint.validate": ["css", "scss", "vue", "html"],
-  "eslint.validate": ["typescript", "vue", "html", "json"],
-  "files.associations": {
-    "*.json": "jsonc"
-  },
+  "eslint.validate": ["typescript", "vue", "html", "json"]
 }
