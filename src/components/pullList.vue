@@ -28,10 +28,10 @@ defineProps({
     :scroll-y="true"
     :lower-threshold="300"
     :scroll-top="scrollTop"
-    @scrolltolower="onScrollToLower"
-    @scroll="onScroll"
+    @scrolltolower="onScrollToLower()"
+    @scroll="onScroll()"
   >
-    <slot name="list"></slot>
+    <slot name="list" />
   </scroll-view>
 </template>
 

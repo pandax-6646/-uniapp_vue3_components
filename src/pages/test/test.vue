@@ -50,11 +50,15 @@ async function uniAsyncTest() {
 function onScrollToLower() {
   console.log('自定义 onScrollToLower');
 }
+
+function onScroll() {
+  console.log('自定义 onScroll');
+}
 </script>
 
 <template>
   <div class="h-screen">
-    <pullList :on-scroll-to-lower="onScrollToLower">
+    <pullList :on-scroll-to-lower="onScrollToLower" :on-scroll="onScroll">
       <template #list>
         <view>name:{{ name }}</view>
         <view>fullName:{{ fullName }}</view>
