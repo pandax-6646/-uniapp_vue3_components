@@ -122,17 +122,33 @@ npm run postinstall
 npm run dev
 ```
 
+## vs code配置
+
+**json文件的注释提示：**
+
+需要在用户的 setting.json　文件中添加如下配置
+
+```json
+{
+  "files.associations": {
+    "manifest.json": "jsonc",
+    "pages.json": "jsonc",
+    "package.json": "jsonc"
+  }
+}
+```
+
 ## 常见问题
 
 ### vetur 提示组件引入报错
 
 **原因：**
 
-vue3 配套的 vscode 插件为 volar,vetur 会存在冲突
+vue3 配套的 vscode 插件为 volar，vetur 会存在冲突
 
 **解决方法：**
 
-在扩展中搜索 volar 安装,然后搜索 vetur 设置禁用工作区
+在扩展中搜索 volar 安装，然后搜索 vetur 设置禁用工作区
 
 ### git commit 保存代码被拦截
 
