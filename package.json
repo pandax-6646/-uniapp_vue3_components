@@ -5,36 +5,22 @@
     "node": ">=16.0.0"
   },
   "scripts": {
-    // 本地运行
     "dev:h5": "uni",
     "dev:mp-weixin": "uni -p mp-weixin",
     "dev:app-android": "uni -p app-android",
     "dev:app-ios": "uni -p app-ios",
-
-    // 构建打包
     "build:h5": "uni build",
     "build:mp-weixin": "uni build -p mp-weixin",
     "build:app-android": "uni build -p app-android",
     "build:app-ios": "uni build -p app-ios",
-
-    // 代码检查
     "lint": "npm run tsc && npm run eslint && npm run stylelint",
     "tsc": "vue-tsc --noEmit --skipLibCheck",
     "eslint": "eslint --ext .vue,.ts src/ --fix",
     "stylelint": "stylelint \"src/**/*.(vue|scss|css)\" --fix",
-
-    // 开启 git hooks
     "postinstall": "husky install",
-
-    //自动添加 pages.json里的页面
     "addPages": "node ./auto/addPage.ts",
-
-    // 规则提交
     "cz": "git add . && cz",
-
-    // 发布
     "tag": "npm version patch && git push && git push origin --tags",
-
     "dev:app": "uni -p app",
     "dev:custom": "uni -p",
     "dev:h5:ssr": "uni --ssr",

@@ -133,8 +133,7 @@ npm run dev
 {
   "files.associations": {
     "manifest.json": "jsonc",
-    "pages.json": "jsonc",
-    "package.json": "jsonc"
+    "pages.json": "jsonc"
   }
 }
 ```
