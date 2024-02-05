@@ -21,8 +21,7 @@
       "@uni-helper/uni-app-types",
       "@uni-helper/uni-ui-types",
       "pinia-plugin-persist-uni"
-    ],
-    "include": ["src/**/*.vue"]
+    ]
   },
   // 校验 uni-app 组件类型
   "vueCompilerOptions": {
