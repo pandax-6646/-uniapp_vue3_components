@@ -1,7 +1,4 @@
-import { isDevelopment, isH5 } from './platform';
 import { forward } from './router';
-import { getCommonParams } from '@/config/commonParams';
-import env from '@/config/env';
 import { hideLoading, showLoading } from '@/config/serviceLoading';
 
 function reject(err: { errno: number; errmsg: string }) {
@@ -14,14 +11,14 @@ function reject(err: { errno: number; errmsg: string }) {
 
     default:
       uni.showToast({
-        title: errmsg
+        title: errmsg,
+        icon: 'none'
       });
       break;
   }
 }
 
-// h5环境开启代理
-const apiBaseUrl = isH5 && isDevelopment ? '/api' : env.apiBaseUrl;
+const apiBaseUrl = import.meta.env.VITE_APP_BASE_API;
 
 function baseRequest(
   method:
@@ -44,7 +41,7 @@ function baseRequest(
     uni.request({
       url: apiBaseUrl + url,
       method,
-      timeout: 20000,
+      timeout: 60 * 1000,
       header: {
         'content-type':
           method === 'GET'
@@ -53,16 +50,15 @@ function baseRequest(
       },
       data,
       success: (res: any) => {
-        if (res.statusCode >= 200 && res.statusCode < 400) {
-          if (res.data.errno === 0) {
-            responseData = res.data;
-          } else {
-            reject(res.data);
-          }
+        console.log('测试数据', res);
+
+        const data = res.data;
+        if (Number(data.code) === 200) {
+          responseData = data.data;
         } else {
           reject({
             errno: -1,
-            errmsg: '抢购火爆，稍候片刻！'
+            errmsg: data.msg
           });
         }
       },
@@ -84,12 +80,10 @@ function baseRequest(
 const http = {
   get: <T>(api: string, params: any) =>
     baseRequest('GET', api, {
-      ...getCommonParams(),
       ...params
     }) as Http.Response<T>,
   post: <T>(api: string, params: any) =>
     baseRequest('POST', api, {
-      ...getCommonParams(),
       ...params
     }) as Http.Response<T>
 };
