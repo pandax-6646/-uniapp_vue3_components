@@ -1,4 +1,5 @@
 import { forward } from './router';
+import { getCommonParams } from '@/config/commonParams';
 import { hideLoading, showLoading } from '@/config/serviceLoading';
 
 function reject(err: { errno: number; errmsg: string }) {
@@ -43,18 +44,18 @@ function baseRequest(
       method,
       timeout: 60 * 1000,
       header: {
-        'content-type':
+        'Content-Type':
           method === 'GET'
             ? 'application/json; charset=utf-8'
-            : 'application/x-www-form-urlencoded'
+            : 'application/x-www-form-urlencoded',
+        'Login-Type': 'PC',
+        token: getCommonParams().token
       },
       data,
       success: (res: any) => {
-        console.log('测试数据', res);
-
         const data = res.data;
         if (Number(data.code) === 200) {
-          responseData = data.data;
+          responseData = data;
         } else {
           reject({
             errno: -1,
@@ -69,7 +70,6 @@ function baseRequest(
         });
       },
       complete: (data) => {
-        console.log(data, 'data');
         resolve(responseData);
         hideLoading();
       }

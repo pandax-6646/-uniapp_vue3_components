@@ -11,7 +11,6 @@ function goTest() {
 }
 
 const hanldeLogin = async () => {
-  console.log('测试数据', 'dengl');
   const res = await user.login({
     username: 'admin',
     password:
@@ -21,7 +20,7 @@ const hanldeLogin = async () => {
     type: 2
   });
 
-  console.log(res);
+  console.log('返回数据', res);
 };
 </script>
 
@@ -45,7 +44,7 @@ const hanldeLogin = async () => {
       hover-class="is-hover"
       @click="hanldeLogin"
     >
-      按钮
+      测试接口
     </button>
   </view>
 </template>
