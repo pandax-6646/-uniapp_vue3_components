@@ -5,7 +5,7 @@
     "node": ">=16.0.0"
   },
   "scripts": {
-    "dev:h5": "uni",
+    "dev:h5": "uni --mode testing",
     "dev:mp-weixin": "uni -p mp-weixin",
     "dev:app-android": "uni -p app-android",
     "dev:app-ios": "uni -p app-ios",
