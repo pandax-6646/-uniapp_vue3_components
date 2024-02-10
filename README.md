@@ -126,8 +126,6 @@ npm run dev
 
 **vs code 放开部分json文件的注释功能：**
 
-
-
 ```json
 // 需要在用户的 setting.json 添加
 {
