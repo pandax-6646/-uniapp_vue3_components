@@ -54,6 +54,7 @@ module.exports = {
     'no-descending-specificity': null,
     'no-empty-source': null,
     'no-missing-end-of-source-newline': null,
+    "declaration-block-trailing-semicolon": null,
     'order/order': ['custom-properties', 'declarations'],
     'order/properties-order': [
       // 布局属性
