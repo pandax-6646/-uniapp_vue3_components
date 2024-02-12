@@ -12,7 +12,7 @@
 
 欢迎使用和点亮小星星。
 
-## 所用技术栈
+## 技术栈
 
 - 依赖管理：node v16.x, 如果你已经使用 nvm，可以参考 [Github: nvm](https://github.com/nvm-sh/nvm#deeper-shell-integration) 来实现 node 版本的自动切换
 - 小程序框架： [uni-app](https://uniapp.dcloud.io/)
@@ -118,8 +118,12 @@ npm install
 # 启动代码提交校验
 npm run postinstall
 
-# 启动服务
-npm run dev
+# 启动本地服务，微信和app同理
+npm run dev:h5
+
+# h5项目打包，微信和app同理
+npm run build:h5-testing  # 测试环境打
+npm run build:h5-production # 生产环境
 ```
 
 ## 代码编辑器配置
@@ -136,9 +140,19 @@ npm run dev
 }
 ```
 
+**安装项目中推荐的 vs code 插件：**
+
+点击扩展，输入@recommended下载插件，安装后重启 vscode。
+
 **运行调试 app，提示 HBuilderX 版本和手机 sdk 版本不匹配：**
 
 项目依赖的 sdk 3.99 版本，检查 HBuilderX 版本不一致则需要 [下载HBuilderX 3.99 版本](https://hx.dcloud.net.cn/Tutorial/HistoryVersion)
+
+## 代码规范
+
+**eslint 规则：**
+
+**提交规则：**
 
 ## 常见问题
 
