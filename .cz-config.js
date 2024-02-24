@@ -3,6 +3,7 @@ module.exports = {
     { value: 'feat', name: 'feat: 新增功能' },
     { value: 'fix', name: 'fix: 修复缺陷' },
     { value: 'docs', name: 'docs: 文档、注释变更' },
+    { value: 'style', name: 'style: 代码格式（不影响功能，例如空格、分号等格式修正）' },
     { value: 'refactor', name: '代码重构（不包括 bug 修复、功能新增）' },
     { value: 'test', name: 'test: 添加疏漏测试或已有测试改动' },
     { value: 'build', name: 'build: 构建流程、外部依赖变更（如升级 npm 包、修改 webpack 配置等）' },
