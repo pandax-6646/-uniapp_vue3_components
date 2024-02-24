@@ -1,19 +1,19 @@
 module.exports = {
   types: [
-    { value: 'feat', name: 'feat: 一个新的特性' },
-    { value: 'fix', name: 'fix: 修复一个Bug' },
-    { value: 'docs', name: 'docs: 变更的只有文档' },
-    { value: 'refactor', name: 'refactor: 代码重构，注意和特性、修复区分开' },
-    { value: 'test', name: 'test: 添加一个测试' },
-    { value: 'build', name: 'build: 修改项目构建系统配置' },
-    { value: 'ci', name: 'ci: 修改项目继续集成流程' },
-    { value: 'chore', name: 'chore: 改变构建流程、或者增加依赖库、工具等' },
+    { value: 'feat', name: 'feat: 新增功能' },
+    { value: 'fix', name: 'fix: 修复缺陷' },
+    { value: 'docs', name: 'docs: 文档、注释变更' },
+    { value: 'refactor', name: '代码重构（不包括 bug 修复、功能新增）' },
+    { value: 'test', name: 'test: 添加疏漏测试或已有测试改动' },
+    { value: 'build', name: 'build: 构建流程、外部依赖变更（如升级 npm 包、修改 webpack 配置等）' },
+    { value: 'ci', name: 'ci: 修改 CI 配置、脚本' },
+    { value: 'chore', name: 'chore: 对构建过程或辅助工具和库的更改（不影响源文件、测试用例）' },
     {
       value: 'improvement',
       name: 'improvement: 用于对当前实现进行改进而没有添加新功能或修复错误的提交',
     },
     { value: 'merge', name: 'merge: 仅进行分支合并' },
-    { value: 'revert', name: 'revert: 回滚到上一个版本' },
+    { value: 'revert', name: 'revert: 回滚到上一个commmit' },
   ],
 
   messages: {
