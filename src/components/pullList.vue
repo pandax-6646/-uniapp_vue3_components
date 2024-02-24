@@ -7,16 +7,16 @@ defineProps({
   onScrollToLower: {
     type: Function,
     default: () => {
-      console.log('onScrollToLower');
+      console.log('onScrollToLower')
     }
   },
   onScroll: {
     type: Function,
     default: () => {
-      console.log('onScroll');
+      console.log('onScroll')
     }
   }
-});
+})
 </script>
 
 <template>

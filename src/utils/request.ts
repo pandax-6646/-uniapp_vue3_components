@@ -1,25 +1,25 @@
-import { forward } from './router';
-import { getCommonParams } from '@/config/commonParams';
-import { hideLoading, showLoading } from '@/config/serviceLoading';
+import { forward } from './router'
+import { getCommonParams } from '@/config/commonParams'
+import { hideLoading, showLoading } from '@/config/serviceLoading'
 
 function reject(err: { errno: number; errmsg: string }) {
-  const { errmsg = '抢购火爆，稍候片刻！', errno = -1 } = err;
+  const { errmsg = '抢购火爆，稍候片刻！', errno = -1 } = err
   switch (errno) {
     case 10000:
       // 特殊异常处理
-      forward('login');
-      break;
+      forward('login')
+      break
 
     default:
       uni.showToast({
         title: errmsg,
         icon: 'none'
-      });
-      break;
+      })
+      break
   }
 }
 
-const apiBaseUrl = import.meta.env.VITE_APP_BASE_API;
+const apiBaseUrl = import.meta.env.VITE_APP_BASE_API
 
 function baseRequest(
   method:
@@ -36,9 +36,9 @@ function baseRequest(
   data: { isLoading: any }
 ) {
   return new Promise((resolve) => {
-    showLoading(data.isLoading);
-    delete data.isLoading;
-    let responseData: unknown;
+    showLoading(data.isLoading)
+    delete data.isLoading
+    let responseData: unknown
     uni.request({
       url: apiBaseUrl + url,
       method,
@@ -53,28 +53,28 @@ function baseRequest(
       },
       data,
       success: (res: any) => {
-        const data = res.data;
+        const data = res.data
         if (Number(data.code) === 200) {
-          responseData = data;
+          responseData = data
         } else {
           reject({
             errno: -1,
             errmsg: data.msg
-          });
+          })
         }
       },
       fail: () => {
         reject({
           errno: -1,
           errmsg: '网络不给力，请检查你的网络设置~'
-        });
+        })
       },
       complete: (data) => {
-        resolve(responseData);
-        hideLoading();
+        resolve(responseData)
+        hideLoading()
       }
-    });
-  });
+    })
+  })
 }
 
 const http = {
@@ -86,6 +86,6 @@ const http = {
     baseRequest('POST', api, {
       ...params
     }) as Http.Response<T>
-};
+}
 
-export default http;
+export default http

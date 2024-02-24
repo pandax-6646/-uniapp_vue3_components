@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import user from '@/api/user';
-import { useTitle } from '@/hooks/useTitle';
-import { forward } from '@/utils/router';
+import user from '@/api/user'
+import { useTitle } from '@/hooks/useTitle'
+import { forward } from '@/utils/router'
 
-const { title, changeTitle } = useTitle();
+const { title, changeTitle } = useTitle()
 function goTest() {
   forward('test', {
     a: 1
-  });
+  })
 }
 
 const hanldeLogin = async () => {
@@ -18,10 +18,10 @@ const hanldeLogin = async () => {
     code: 9527,
     codeKey: 'image_code_557a2f16c14843cf98b46d0cf7414268',
     type: 2
-  });
+  })
 
-  console.log('返回数据', res);
-};
+  console.log('返回数据', res)
+}
 </script>
 
 <template>

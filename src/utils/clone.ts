@@ -10,9 +10,9 @@ export function deepClone<T>(source: T): T {
           o,
           prop,
           Object.getOwnPropertyDescriptor(source, prop)!
-        );
-        o[prop] = deepClone((source as { [key: string]: any })[prop]);
-        return o;
+        )
+        o[prop] = deepClone((source as { [key: string]: any })[prop])
+        return o
       }, Object.create(Object.getPrototypeOf(source)))
-    : (source as T);
+    : (source as T)
 }
