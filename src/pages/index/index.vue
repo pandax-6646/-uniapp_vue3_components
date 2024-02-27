@@ -43,6 +43,7 @@ const hanldeLogin = async () => {
       type="default"
       hover-class="is-hover"
       style="margin-top: 20rpx"
+      class="test"
       @click="hanldeLogin"
     >
       测试接口
@@ -51,6 +52,10 @@ const hanldeLogin = async () => {
 </template>
 
 <style scoped lang="scss">
+@import '@/uni-scss';
+.test {
+  color: $uni-color-primary;
+}
 .content {
   display: flex;
   flex-direction: column;
