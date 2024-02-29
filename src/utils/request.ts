@@ -1,5 +1,7 @@
+import { isDevelopment, isH5 } from './platform'
 import { forward } from './router'
 import { getCommonParams } from '@/config/commonParams'
+import env from '@/config/env'
 import { hideLoading, showLoading } from '@/config/serviceLoading'
 
 function reject(err: { errno: number; errmsg: string }) {
@@ -19,7 +21,7 @@ function reject(err: { errno: number; errmsg: string }) {
   }
 }
 
-const apiBaseUrl = '/api'
+const apiBaseUrl = isH5 && isDevelopment ? '/api' : env.apiBaseUrl
 
 function baseRequest(
   method:
