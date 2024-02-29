@@ -22,6 +22,8 @@ const hanldeLogin = async () => {
 
   console.log('返回数据', res)
 }
+
+const { style, schoolName, projectDesc, updateTheme } = useStore('theme')
 </script>
 
 <template>
@@ -48,11 +50,16 @@ const hanldeLogin = async () => {
     >
       测试接口
     </button>
+    <button
+      :style="{ color: style['--error-color'] }"
+      @click="updateTheme('zd')"
+    >
+      {{ schoolName }} {{ projectDesc }}
+    </button>
   </view>
 </template>
 
 <style scoped lang="scss">
-@import '@/uni-scss';
 .test {
   color: $uni-color-primary;
 }

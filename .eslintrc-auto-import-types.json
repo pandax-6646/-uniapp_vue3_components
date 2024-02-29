@@ -5,6 +5,7 @@
     "PostTest": true,
     "Types": true,
     "User": true,
+    "Theme": true,
     "UserLogin": true
   }
 }
