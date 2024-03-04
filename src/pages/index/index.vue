@@ -28,6 +28,7 @@ const { style, schoolName, projectDesc, updateTheme } = useStore('theme')
 
 <template>
   <view class="content">
+    <DayList></DayList>
     <image class="logo" src="/static/logo.png" />
     <view class="text-area">
       <text class="title">{{ title }}</text>
