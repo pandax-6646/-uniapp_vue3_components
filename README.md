@@ -197,3 +197,13 @@ ts 类型声明在带来类型提示，减少编程过程中 bug 率的同时，
   chmod +x ./.husky/pre-commit
   chmod +x ./.husky/commit-msg
   ```
+
+### npm run cz 报错 spawn git ENOENT
+
+**原因：**
+
+git 未安装或者是没有在 vs code 中配置环境变量
+
+**解决方法：**
+
+[VS Code 在 mac 和 windows 配置 git.path](https://bobbyhadz.com/blog/git-not-found-install-it-or-configure-it-in-vscode)
