@@ -42,7 +42,7 @@ export default defineConfig({
     Unocss()
   ],
   server: {
-    port: 8080,
+    port: 3000,
     open: true, // 自动打开
     base: './ ', // 生产环境路径
     proxy: {
