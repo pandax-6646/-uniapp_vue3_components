@@ -103,7 +103,7 @@
 └── vite.config.ts                    vite配置
 ```
 
-## 工程配置
+## 运行&打包
 
 ```bash
 # 克隆项目
@@ -120,6 +120,12 @@ npm run postinstall
 
 # 启动本地服务，微信和app同理
 npm run dev:h5
+
+# 自动添加页面
+# 首先在pages.json > pages属性中添加页面的路径等配置且不能有任何注释，然后运行
+npm run addPage
+# 如果已存在相同名称文件夹，则跳过创建
+
 
 # h5项目打包，微信和app同理
 npm run build:h5-testing  # 测试环境打
