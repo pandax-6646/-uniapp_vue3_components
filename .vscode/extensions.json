@@ -1,11 +1,11 @@
 {
   "recommendations": [
-    "vue.volar",
+    "vue.volar", // vue3 语法支持
     "stylelint.vscode-stylelint",
-    "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint", // eslint
+    "esbenp.prettier-vscode", // prettier
     "sdras.vue-vscode-snippets",
-    "uni-helper.uni-app-snippets-vscode",
-    "EditorConfig.EditorConfig"
+    "uni-helper.uni-app-snippets-vscode", // uni-app 代码提示
+    "editorConfig.editorConfig" // editorconfig
   ]
 }
