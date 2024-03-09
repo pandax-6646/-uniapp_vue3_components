@@ -5,24 +5,22 @@ import moment from 'moment'
 interface Day {
   day: string
   week: string
-  left?: number
-  width?: number
+  left: number
+  width: number
 }
 
-let scrollLeft = 0
-let dayList: Day[] = ref([])
+const scrollLeft = ref(0)
+let dayList: Day[] = []
 const selectIndex = ref(0)
 
 const contentScrollW = ref(0)
 // 获取标题区域宽度，和每个子元素节点的宽度以及元素距离左边栏的距离
 function getScrollW() {
-  console.log('测试数据a')
   const query = uni.createSelectorQuery()
 
   query
     .select('.scroll-x')
-    .boundingClientRect((data) => {
-      console.log('data', data)
+    .boundingClientRect((data: any) => {
       // 拿到 scroll-view 组件宽度
       contentScrollW.value = data.width
     })
@@ -30,10 +28,9 @@ function getScrollW() {
 
   query
     .selectAll('.day')
-    .boundingClientRect((data) => {
-      const dataLen: number = data?.length
+    .boundingClientRect((data: any) => {
+      const dataLen = data.length
 
-      console.log(data, 's')
       for (let i = 0; i < dataLen; i++) {
         //  scroll-view 子元素组件距离左边栏的距离
         dayList[i].left = data[i].left
@@ -57,7 +54,9 @@ function getMonthDays(month: number, dayList: Day[]): Day[] {
       day: timeData.format('MM-DD'),
       week: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'][
         timeData.weekday()
-      ]
+      ],
+      width: 0,
+      left: 0
     })
   }
   return getMonthDays(month + 1, dayList)
@@ -67,9 +66,9 @@ function changeDay(row, index: number) {
   selectIndex.value = index
 
   // 效果一(当前点击子元素靠左展示)  子元素宽度不相同也可实现
-  scrollLeft = 0
+  scrollLeft.value = 0
   for (let i = 0; i < index - 1; i++) {
-    scrollLeft += dayList?.i?.width
+    scrollLeft.value += dayList[i].width
   }
 }
 
