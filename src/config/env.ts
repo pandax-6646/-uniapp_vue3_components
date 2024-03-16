@@ -2,10 +2,10 @@ const apiEnv: ApiEnv = 'dev'
 
 const envMap = {
   dev: {
-    apiBaseUrl: 'http://192.168.4.96:9527'
+    apiBaseUrl: 'https://pcapi-xiaotuxian-front-devtest.itheima.net'
   },
   prod: {
-    apiBaseUrl: 'https://m.api.xxx.com'
+    apiBaseUrl: 'https://pcapi-xiaotuxian-front.itheima.net'
   }
 }
 

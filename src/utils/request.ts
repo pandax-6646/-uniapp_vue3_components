@@ -1,4 +1,5 @@
-import { isDevelopment, isH5 } from './platform'
+import { isDevelopment, isH5, platform } from './platform'
+import { getPlatformData } from './shared'
 import { forward } from './router'
 import { getCommonParams } from '@/config/commonParams'
 import env from '@/config/env'
@@ -7,8 +8,8 @@ import { hideLoading, showLoading } from '@/config/serviceLoading'
 function reject(err: { errno: number; errmsg: string }) {
   const { errmsg = '抢购火爆，稍候片刻！', errno = -1 } = err
   switch (errno) {
-    case 10000:
-      // 特殊异常处理
+    case 401:
+      // token失效或错误
       forward('login')
       break
 
@@ -22,6 +23,10 @@ function reject(err: { errno: number; errmsg: string }) {
 }
 
 const apiBaseUrl = isH5 && isDevelopment ? '/api' : env.apiBaseUrl
+const platformData = {
+  AppPlus: 'app',
+  MpWeixin: 'miniapp'
+}
 
 function baseRequest(
   method:
@@ -50,17 +55,17 @@ function baseRequest(
           method === 'GET'
             ? 'application/json; charset=utf-8'
             : 'application/x-www-form-urlencoded',
-        'Login-Type': 'PC',
-        token: getCommonParams().token
+        'source-client': getPlatformData(platform, platformData),
+        Authorization: getCommonParams().token
       },
       data,
       success: (res: any) => {
         const data = res.data
-        if (Number(data.code) === 200) {
-          responseData = data
+        if (Number(data.code) === 1) {
+          responseData = data.result
         } else {
           reject({
-            errno: -1,
+            errno: Number(data.code),
             errmsg: data.msg
           })
         }
@@ -71,7 +76,7 @@ function baseRequest(
           errmsg: '网络不给力，请检查你的网络设置~'
         })
       },
-      complete: (data) => {
+      complete: () => {
         resolve(responseData)
         hideLoading()
       }

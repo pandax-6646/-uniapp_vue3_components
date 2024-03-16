@@ -43,6 +43,7 @@ enum EPlatform {
 /** 使用条件编译获取平台信息 */
 function ifDefPlatform(): EPlatform {
   let platform: EPlatform
+
   // #ifdef APP-PLUS
   platform = EPlatform.AppPlus
   // #endif

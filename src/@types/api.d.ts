@@ -1,6 +1,8 @@
 declare namespace Http {
   type Response<T> = Promise<{
-    data?: T
+    code: string
+    msg: string
+    result?: T
   }>
 }
 
