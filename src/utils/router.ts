@@ -1,6 +1,10 @@
 import { isFastClick, parseUrl, restoreUrl } from './shared'
 import { getUrlType, h5HsqMap, needAuthPath, pagesMap } from './urlMap'
 
+/**
+ * 处理URL页面跳转逻辑。
+ * @param e 事件对象，预期包含当前目标的数据集（dataset）。
+ */
 export function onUrlPage(e: any) {
   if (isFastClick()) return
   const { url } = e.currentTarget.dataset
@@ -29,6 +33,12 @@ export function onUrlPage(e: any) {
   }
 }
 
+/**
+ * 页面转发函数
+ * @param name 目标页面名称
+ * @param query 传递给目标页面的查询参数，默认为空对象
+ * @returns 返回转发后的结果，具体类型依赖于调用的API
+ */
 export function forward(name: string, query: Types.Query = {}): any {
   if (needAuthPath.includes(name)) return forward('login')
   const targetPage = pagesMap.find((i) => i.name === name)
@@ -43,8 +53,10 @@ export function forward(name: string, query: Types.Query = {}): any {
   uni.redirectTo(params)
 }
 
+/**
+ * 使用delta参数执行页面返回操作。
+ * @param delta 返回的页面数，delta>1时，表示返回到当前页面的n级父页面。
+ */
 export function back(delta: number) {
-  uni.navigateBack({
-    delta
-  })
+  uni.navigateBack({ delta })
 }

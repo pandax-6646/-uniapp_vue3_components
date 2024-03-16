@@ -3,8 +3,8 @@ export default defineStore({
   state: () => {
     return {
       userInfo: {
-        token: 'token',
-        user_id: 111
+        token: '',
+        user_id: NaN
       }
     } as {
       userInfo: User.UserInfo
@@ -25,6 +25,10 @@ export default defineStore({
   actions: {
     setUserInfo(userInfo: User.UserInfo) {
       Object.assign(this.userInfo, userInfo)
+    },
+
+    setToken(token: string) {
+      this.userInfo.token = token
     }
   }
 })

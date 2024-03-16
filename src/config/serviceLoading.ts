@@ -2,9 +2,7 @@ let loadingCount = 0
 
 export function showLoading(isLoading: boolean) {
   if (isLoading) {
-    uni.showLoading({
-      title: '加载中'
-    })
+    uni.showLoading({ title: '加载中' })
     loadingCount = loadingCount + 1
   }
 }

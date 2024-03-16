@@ -1,16 +1,31 @@
-import { isDevelopment, isH5, platform } from './platform'
-import { getPlatformData } from './shared'
 import { forward } from './router'
-import { getCommonParams } from '@/config/commonParams'
+import { getPlatformData } from './shared'
+import { isDevelopment, isH5, platform } from './platform'
 import env from '@/config/env'
 import { hideLoading, showLoading } from '@/config/serviceLoading'
 
 function reject(err: { errno: number; errmsg: string }) {
-  const { errmsg = '抢购火爆，稍候片刻！', errno = -1 } = err
+  const { errmsg = '请求失败，请重试！', errno = -1 } = err
   switch (errno) {
+    // token 失效或错误
     case 401:
-      // token失效或错误
-      forward('login')
+      uni.showToast({
+        title: errmsg,
+        icon: 'none',
+        complete: () => {
+          setTimeout(() => {
+            // 重定向到登录页
+            forward('login', { replace: false })
+
+            // 清除登录信息
+            useStore('user').setUserInfo({
+              user_id: NaN,
+              token: ''
+            })
+          }, 2000)
+        }
+      })
+
       break
 
     default:
@@ -56,16 +71,16 @@ function baseRequest(
             ? 'application/json; charset=utf-8'
             : 'application/x-www-form-urlencoded',
         'source-client': getPlatformData(platform, platformData),
-        Authorization: getCommonParams().token
+        Authorization: useStore('user').token.value
       },
       data,
       success: (res: any) => {
         const data = res.data
-        if (Number(data.code) === 1) {
+        if (res.statusCode >= 200 && res.statusCode < 300) {
           responseData = data.result
-        } else {
+        } else if (res.statusCode === 401) {
           reject({
-            errno: Number(data.code),
+            errno: Number(res.statusCode),
             errmsg: data.msg
           })
         }

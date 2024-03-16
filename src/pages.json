@@ -16,13 +16,7 @@
         "navigationBarTextStyle": "white"
       }
     },
-    {
-      "name": "category",
-      "path": "pages/category/category",
-      "style": {
-        "navigationBarTitleText": "商品分类"
-      }
-    },
+
     {
       "name": "cart",
       "path": "pages/cart/cart",
@@ -50,6 +44,30 @@
           "path": "test",
           "style": {
             "navigationBarTitleText": "测试"
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/category",
+      "pages": [
+        {
+          "name": "category",
+          "path": "category",
+          "style": {
+            "navigationBarTitleText": "商品分类"
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/login",
+      "pages": [
+        {
+          "name": "login",
+          "path": "login",
+          "style": {
+            "navigationBarTitleText": "登录"
           }
         }
       ]
