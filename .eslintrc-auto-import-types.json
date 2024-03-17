@@ -3,6 +3,7 @@
     "Http": true,
     "GetTest": true,
     "PostTest": true,
+    "GetBanner": true,
     "Types": true,
     "User": true,
     "Theme": true,
