@@ -4,11 +4,10 @@ import CustomNavbar from './components/CustomNavbar.vue'
 import home from '@/api/home'
 
 // 获取轮播图
-let bannerList = ref<GetBanner.data[]>([])
+const bannerList = ref<GetBanner.data[]>([])
 const getBannerData = async () => {
   const res = await home.getBannerApi({ distributionSite: '1' })
-  bannerList = res
-  console.log('测试数据', res)
+  bannerList.value = res.result || []
 }
 
 // 当 swiper 下标发生变化时触发

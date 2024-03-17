@@ -77,7 +77,7 @@ function baseRequest(
       success: (res: any) => {
         const data = res.data
         if (res.statusCode >= 200 && res.statusCode < 300) {
-          responseData = data.result
+          responseData = data
         } else {
           reject({
             errno: Number(res.statusCode),
