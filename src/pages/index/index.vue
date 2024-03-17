@@ -28,6 +28,7 @@ onLoad(() => {
       :circular="true"
       :autoplay="false"
       :interval="3000"
+      style="height: 100%"
       @change="onChange"
     >
       <swiper-item v-for="item in bannerList" :key="item.id">
