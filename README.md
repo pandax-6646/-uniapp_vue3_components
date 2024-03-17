@@ -187,7 +187,7 @@ ts 类型声明在带来类型提示，减少编程过程中 bug 率的同时，
 
 将接口返回的`JSON`数据通过`json2ts`进行解析，然后直接 cv 即可。
 
-[相关链接](http://json2ts.com/)
+[相关链接](http://json2ts.com/) [插件地址](https://marketplace.visualstudio.com/items?itemName=GregorBiswanger.json2ts)
 
 ### husky 未执行
 
