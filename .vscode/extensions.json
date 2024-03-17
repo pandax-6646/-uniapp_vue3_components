@@ -5,6 +5,7 @@
     "dbaeumer.vscode-eslint", // eslint
     "esbenp.prettier-vscode", // prettier
     "sdras.vue-vscode-snippets",
+    "gregorbiswanger.json2ts", // json to ts
     "uni-helper.uni-app-snippets-vscode", // uni-app 代码提示
     "editorConfig.editorConfig" // editorconfig
   ]
