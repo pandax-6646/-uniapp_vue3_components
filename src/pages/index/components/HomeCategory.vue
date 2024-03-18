@@ -1,6 +1,5 @@
 <script setup lang="ts">
-// 定义 props 接收数据
-defineProps<{ list: GetCategory.dataItem[] }>()
+defineProps<{ list: Home.CategoryDataItem[] }>()
 </script>
 
 <template>

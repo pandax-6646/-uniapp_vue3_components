@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps<{ list: GetBanner.dataItem[] }>()
+defineProps<{ list: Home.BannerDataItem[] }>()
 
 // 当 swiper 下标发生变化时触发
 const activeIndex = ref(0)

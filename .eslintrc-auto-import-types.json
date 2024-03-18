@@ -4,8 +4,7 @@
     "GetTest": true,
     "PostTest": true,
     "Types": true,
-    "GetBanner": true,
-    "GetCategory": true,
+    "Home": true,
     "User": true,
     "Theme": true,
     "UserLogin": true

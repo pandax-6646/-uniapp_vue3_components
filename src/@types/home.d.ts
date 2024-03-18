@@ -1,21 +1,21 @@
 
-// 首页-轮播图
-declare namespace GetBanner {
-  interface params {
+declare namespace Home {
+  // 首页-轮播图
+  interface BannerRequestParams {
     distributionSite: string
   }
 
-  interface dataItem {
+  interface BannerDataItem {
     hrefUrl: string
     id: string
     imgUrl: string
     type: number
   }
-}
 
-// 首页-分类
-declare namespace GetCategory {
-  interface dataItem {
+
+
+  // 首页-分类
+  interface CategoryDataItem {
     id: string
     name: string
     icon: string
