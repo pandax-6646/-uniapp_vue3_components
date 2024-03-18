@@ -3,8 +3,9 @@
     "Http": true,
     "GetTest": true,
     "PostTest": true,
-    "GetBanner": true,
     "Types": true,
+    "GetBanner": true,
+    "GetCategory": true,
     "User": true,
     "Theme": true,
     "UserLogin": true
