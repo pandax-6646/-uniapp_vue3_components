@@ -101,13 +101,9 @@ function baseRequest(
 
 const http = {
   get: <T>(api: string, params: any) =>
-    baseRequest('GET', api, {
-      ...params
-    }) as Http.Response<T>,
+    baseRequest('GET', api, { ...params }) as Http.Response<T>,
   post: <T>(api: string, params: any) =>
-    baseRequest('POST', api, {
-      ...params
-    }) as Http.Response<T>
+    baseRequest('POST', api, { ...params }) as Http.Response<T>
 }
 
 export default http

@@ -18,7 +18,7 @@ const { safeAreaInsets } = uni.getSystemInfoSync()
   </view>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 /* 自定义导航条 */
 .navbar {
   display: flex;

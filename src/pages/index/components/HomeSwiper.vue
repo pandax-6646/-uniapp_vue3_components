@@ -10,7 +10,13 @@ const onChange: UniHelper.SwiperOnChange = (ev) => {
 
 <template>
   <view class="carousel">
-    <swiper circular :interval="3000" style="height: 100%" @change="onChange">
+    <swiper
+      circular
+      autoplay
+      :interval="3000"
+      style="height: 100%"
+      @change="onChange"
+    >
       <swiper-item v-for="item in list" :key="item.id">
         <navigator url="/pages/test/test" hover-class="none" class="navigator">
           <image mode="aspectFill" class="image" :src="item.imgUrl" />
