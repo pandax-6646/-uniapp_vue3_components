@@ -7,7 +7,11 @@ const home = {
 
   // 首页-分类
   getCategoryApi: () =>
-    http.get<Home.CategoryDataItem[]>('/home/category/mutli', '')
+    http.get<Home.CategoryDataItem[]>('/home/category/mutli', ''),
+
+  // 首页-推荐商品
+  getRecommendApi: () =>
+    http.get<Home.RecommendDataItem[]>('/home/hot/mutli', '')
 }
 
 export default home

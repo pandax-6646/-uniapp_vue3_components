@@ -19,14 +19,42 @@ const getCategoryData = async () => {
   categoryList.value = res.result || []
 }
 
+// 获取热门推荐数据
+const recommendList = ref<Home.RecommendDataItem[]>([])
+const getRecommendData = async () => {
+  const res = await home.getRecommendApi()
+  recommendList.value = res.result || []
+}
+
 onLoad(() => {
   getBannerData()
   getCategoryData()
+  getRecommendData()
 })
 </script>
 
 <template>
-  <HomeNavbar />
-  <HomeSwiper :list="bannerList" />
-  <HomeCategory :list="categoryList" />
+  <view>
+    <HomeNavbar />
+    <HomeSwiper :list="bannerList" />
+    <HomeCategory :list="categoryList" />
+    <HotRecommend :list="recommendList" />
+  </view>
 </template>
+
+<style lang="scss" scoped>
+page {
+  overflow: hidden;
+  height: 100%;
+  background-color: #f7f7f7;
+}
+.viewport {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.scroll-view {
+  overflow: hidden;
+  flex: 1;
+}
+</style>

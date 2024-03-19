@@ -20,4 +20,15 @@ declare namespace Home {
     name: string
     icon: string
   }
+
+
+  // 首页-推荐商品
+  interface RecommendDataItem {
+    id: string
+    alt: string
+    pictures: string[]
+    target: string
+    title: string
+    type: string
+  }
 }
