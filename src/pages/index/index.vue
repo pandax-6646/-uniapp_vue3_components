@@ -89,7 +89,7 @@ onShow(() => {
 </script>
 
 <template>
-  <PullList
+  <UpPullList
     class="viewport"
     :lower-threshold="50"
     :on-scroll-to-lower="handleLoadMore"
@@ -111,7 +111,7 @@ onShow(() => {
       <!-- 猜你喜欢 -->
       <GuessLike :list="guessLikeList" />
     </template>
-  </PullList>
+  </UpPullList>
 </template>
 
 <style lang="scss" scoped>

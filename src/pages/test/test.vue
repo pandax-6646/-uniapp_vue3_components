@@ -58,7 +58,7 @@ function onScroll() {
 
 <template>
   <div class="h-screen">
-    <pullList :on-scroll-to-lower="onScrollToLower" :on-scroll="onScroll">
+    <PullList :on-scroll-to-lower="onScrollToLower" :on-scroll="onScroll">
       <template #list>
         <view>name:{{ name }}</view>
         <view>fullName:{{ fullName }}</view>
@@ -74,7 +74,7 @@ function onScroll() {
         <view class="p-10">unocss-test</view>
         <view v-for="i in 30" :key="i" class="p10">scroll Test</view>
       </template>
-    </pullList>
+    </PullList>
   </div>
 </template>
 

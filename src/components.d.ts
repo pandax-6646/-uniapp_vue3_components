@@ -14,5 +14,6 @@ declare module '@vue/runtime-core' {
     PullList: typeof import('./components/pullList.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    UpPullList: typeof import('./components/UpPullList.vue')['default']
   }
 }
