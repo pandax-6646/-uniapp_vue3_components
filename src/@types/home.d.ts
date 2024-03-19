@@ -31,4 +31,22 @@ declare namespace Home {
     title: string
     type: string
   }
+
+
+
+  // 首页-猜你喜欢
+  interface GuessLikeRequestParams  {
+    page: number
+    pageSize: number
+  }
+
+  interface GuessLikeDataItem {
+    id: string
+    name: string
+    desc: string
+    price: number
+    picture: string
+    discount: number
+    orderNum: number
+  }
 }

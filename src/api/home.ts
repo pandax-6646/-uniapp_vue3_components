@@ -11,7 +11,14 @@ const home = {
 
   // 首页-推荐商品
   getRecommendApi: () =>
-    http.get<Home.RecommendDataItem[]>('/home/hot/mutli', '')
+    http.get<Home.RecommendDataItem[]>('/home/hot/mutli', ''),
+
+  // 首页-猜你喜欢
+  getGuessLikeApi: (params: Home.GuessLikeRequestParams) =>
+    http.get<Http.PageResult<Home.GuessLikeDataItem>>(
+      '/home/goods/guessLike',
+      params
+    )
 }
 
 export default home
