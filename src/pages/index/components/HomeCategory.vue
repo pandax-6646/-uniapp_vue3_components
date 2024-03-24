@@ -17,7 +17,7 @@ defineProps<{ list: Home.CategoryDataItem[] }>()
   </view>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 /* 前台类目 */
 .category {
   display: flex;

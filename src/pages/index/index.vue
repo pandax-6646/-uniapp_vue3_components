@@ -5,6 +5,7 @@ import HomeSwiper from './components/HomeSwiper.vue'
 import HomeCategory from './components/HomeCategory.vue'
 import HotRecommend from './components/HotRecommend.vue'
 import HomeSkeletonScreen from './components/HomeSkeletonScreen.vue'
+import { hideLoading, showLoading } from '@/config/serviceLoading'
 import home from '@/api/home'
 
 // 获取轮播图数据
@@ -29,6 +30,17 @@ const getRecommendData = async () => {
 }
 
 // 获取猜你喜欢数据
+interface ContentText {
+  contentdown: string
+  contentrefresh: string
+  contentnomore: string
+}
+const contentText = ref<ContentText>({
+  contentdown: '上拉加载更多',
+  contentrefresh: '正在加载...',
+  contentnomore: '没有更多数据了'
+})
+
 const searchParams = ref<Home.GuessLikeRequestParams>({
   page: 1,
   pageSize: 10
@@ -72,62 +84,70 @@ const resetData = () => {
   guessLikeList.value = []
 }
 
-onLoad(() => {
-  getBannerData()
-  getCategoryData()
-  getRecommendData()
-})
-
-onShow(() => {
+// 下拉刷新首页
+const isOnLoad = ref(false)
+const onRefresherrefresh = async () => {
+  isOnLoad.value = true
+  showLoading(isOnLoad.value)
   resetData()
-  getGuessLikeData()
+  await Promise.all([
+    getBannerData(),
+    getCategoryData(),
+    getRecommendData(),
+    !guessLikeList.value.length && getGuessLikeData()
+  ])
+  isOnLoad.value = false
+  hideLoading()
+}
+
+onLoad(() => {
+  onRefresherrefresh()
 })
 </script>
 
 <template>
-  <!-- 自定义导航栏 -->
-  <HomeNavbar />
+  <view class="home-container">
+    <!-- 自定义导航栏 -->
+    <HomeNavbar />
 
-  <PullUpList
-    class="viewport"
-    :on-scroll-to-lower="handleLoadMore"
-    :load-status="loadStatus"
-  >
-    <template #list>
-      <!-- 骨架屏 -->
-      <HomeSkeletonScreen
-        v-if="
-          !bannerList.length &&
-          !categoryList.length &&
-          !recommendList.length &&
-          !guessLikeList.length
-        "
-      />
+    <HomeSkeletonScreen v-if="isOnLoad" />
 
-      <template v-else>
-        <!-- 轮播图 -->
-        <HomeSwiper :list="bannerList" />
+    <!-- 轮播图、分类列表、热门推荐、猜你喜欢 -->
+    <scroll-view
+      v-else
+      scroll-y
+      refresher-enabled
+      enable-back-to-top
+      class="scroll-wrap"
+      :lower-threshold="20"
+      @scrolltolower="handleLoadMore"
+      @refresherrefresh="onRefresherrefresh"
+    >
+      <!-- 轮播图 -->
+      <HomeSwiper :list="bannerList" />
 
-        <!-- 分类列表 -->
-        <HomeCategory :list="categoryList" />
+      <!-- 分类列表 -->
+      <HomeCategory :list="categoryList" />
 
-        <!-- 热门推荐 -->
-        <HotRecommend :list="recommendList" />
+      <!-- 热门推荐 -->
+      <HotRecommend :list="recommendList" />
 
-        <!-- 猜你喜欢 -->
-        <GuessLike :list="guessLikeList" />
-      </template>
-    </template>
-  </PullUpList>
+      <!-- 猜你喜欢 -->
+      <GuessLike :list="guessLikeList" />
+
+      <!-- 加载更多 -->
+      <uni-load-more :status="loadStatus" :content-text="contentText" />
+    </scroll-view>
+  </view>
 </template>
 
 <style lang="scss" scoped>
-.viewport {
+.home-container {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
-.scroll-view {
+.scroll-wrap {
   overflow: hidden;
   flex: 1;
 }

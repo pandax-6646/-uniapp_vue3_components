@@ -23,7 +23,7 @@ defineProps<{ list: Home.GuessLikeDataItem[] }>()
   </view>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 :host {
   display: block;
 }
@@ -56,12 +56,8 @@ defineProps<{ list: Home.GuessLikeDataItem[] }>()
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-bottom: -20rpx;
   padding: 0 20rpx;
-  .navigator-wrap:nth-last-child(-n + 2) {
-    .guess-item {
-      margin-bottom: 0;
-    }
-  }
   .guess-item {
     overflow: hidden;
     margin-bottom: 20rpx;

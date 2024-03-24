@@ -35,7 +35,7 @@ const onChange: UniHelper.SwiperOnChange = (ev) => {
   </view>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 /* 轮播图 */
 .carousel {
   overflow: hidden;

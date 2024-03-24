@@ -13,4 +13,7 @@ onHide(() => {
 
 <style lang="scss">
 @import './static/css/index.scss';
+.uni-tabbar {
+  box-shadow: 0 -4rpx 10rpx 0 rgba(0, 0, 0, 0.1);
+}
 </style>

@@ -75,13 +75,13 @@ function baseRequest(
       },
       data,
       success: (res: any) => {
-        const data = res.data
+        const resultData = res.data
         if (res.statusCode >= 200 && res.statusCode < 300) {
-          responseData = data
+          responseData = resultData
         } else {
           reject({
             errno: Number(res.statusCode),
-            errmsg: data.msg
+            errmsg: resultData.msg
           })
         }
       },
@@ -93,7 +93,9 @@ function baseRequest(
       },
       complete: () => {
         resolve(responseData)
-        hideLoading()
+        if (data.isLoading) {
+          hideLoading()
+        }
       }
     })
   })
