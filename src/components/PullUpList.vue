@@ -7,7 +7,7 @@ withDefaults(
   }>(),
   {
     loadStatus: 'more',
-    lowerThreshold: 30,
+    lowerThreshold: 1,
     onScrollToLower: () => {}
   }
 )
@@ -34,11 +34,9 @@ const contentText = ref<ContentText>({
     refresher-enabled
     :scroll-y="true"
     :lower-threshold="lowerThreshold"
-    @scrolltolower="onScrollToLower()"
+    @scrolltolower="onScrollToLower"
   >
     <slot name="list" />
     <uni-load-more :status="loadStatus" :content-text="contentText" />
   </scroll-view>
 </template>
-
-<style scoped lang="scss"></style>

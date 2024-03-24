@@ -27,50 +27,46 @@ const getRecommendData = async () => {
   recommendList.value = res.result || []
 }
 
-const page = ref(1)
-const pageSize = ref(10)
+// 获取猜你喜欢数据
+const searchParams = ref<Home.GuessLikeRequestParams>({
+  page: 1,
+  pageSize: 10
+})
 const loadStatus = ref<'more' | 'loading' | 'noMore'>('more')
 const guessLikeList = ref<Home.GuessLikeDataItem[]>([])
 
-const hasLoadMore = (currentPage: number, totalPage: number) => {
-  if (currentPage >= 1 && currentPage <= totalPage) {
-    loadStatus.value = 'more'
-  } else {
-    loadStatus.value = 'noMore'
-  }
-  // getGuessLikeData()
-}
-
-// 获取猜你喜欢数据
 const getGuessLikeData = async () => {
   loadStatus.value = 'loading'
-  const res = await home.getGuessLikeApi({
-    pageSize: pageSize.value,
-    page: page.value
-  })
+  const res = await home.getGuessLikeApi(searchParams.value)
 
   const result = res.result
   if (!result) return
 
-  hasLoadMore(page.value, result.counts / pageSize.value)
-
-  page.value = result.page
-  pageSize.value = result.pageSize
+  // 合并数据
+  searchParams.value = {
+    page: result.page,
+    pageSize: result.pageSize
+  }
   guessLikeList.value.push(...result.items)
+
+  // 判断是否还有更多数据
+  const totalPage = Math.ceil(result.counts / searchParams.value.pageSize)
+  loadStatus.value = searchParams.value.page >= totalPage ? 'noMore' : 'more'
 }
 
 // 加载更多
 const handleLoadMore = () => {
-  if (loadStatus.value === 'noMore') {
-    page.value += 1
-    getGuessLikeData()
-  }
+  if (loadStatus.value === 'noMore') return
+  searchParams.value.page += 1
+  getGuessLikeData()
 }
 
 // 重置数据
 const resetData = () => {
-  page.value = 1
-  pageSize.value = 10
+  searchParams.value = {
+    page: 1,
+    pageSize: 10
+  }
   loadStatus.value = 'noMore'
   guessLikeList.value = []
 }
@@ -79,7 +75,6 @@ onLoad(() => {
   getBannerData()
   getCategoryData()
   getRecommendData()
-  getGuessLikeData()
 })
 
 onShow(() => {
@@ -89,9 +84,8 @@ onShow(() => {
 </script>
 
 <template>
-  <UpPullList
+  <PullUpList
     class="viewport"
-    :lower-threshold="50"
     :on-scroll-to-lower="handleLoadMore"
     :load-status="loadStatus"
   >
@@ -111,7 +105,7 @@ onShow(() => {
       <!-- 猜你喜欢 -->
       <GuessLike :list="guessLikeList" />
     </template>
-  </UpPullList>
+  </PullUpList>
 </template>
 
 <style lang="scss" scoped>

@@ -11,9 +11,8 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     DayList: typeof import('./components/DayList.vue')['default']
     GuessLike: typeof import('./components/GuessLike.vue')['default']
-    PullList: typeof import('./components/pullList.vue')['default']
+    PullUpList: typeof import('./components/PullUpList.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    UpPullList: typeof import('./components/UpPullList.vue')['default']
   }
 }

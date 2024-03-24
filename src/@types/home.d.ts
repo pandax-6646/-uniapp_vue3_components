@@ -35,7 +35,7 @@ declare namespace Home {
 
 
   // 首页-猜你喜欢
-  interface GuessLikeRequestParams  {
+  interface GuessLikeRequestParams {
     page: number
     pageSize: number
   }

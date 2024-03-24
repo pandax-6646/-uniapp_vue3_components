@@ -3,8 +3,7 @@ defineProps<{ list: Home.GuessLikeDataItem[] }>()
 </script>
 
 <template>
-  <!-- 猜你喜欢 -->
-  <view class="caption">
+  <view v-if="list.length" class="caption">
     <text class="text">猜你喜欢</text>
   </view>
   <view class="guess">
@@ -58,6 +57,11 @@ defineProps<{ list: Home.GuessLikeDataItem[] }>()
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 0 20rpx;
+  .navigator-wrap:nth-last-child(-n + 2) {
+    .guess-item {
+      margin-bottom: 0;
+    }
+  }
   .guess-item {
     overflow: hidden;
     margin-bottom: 20rpx;
@@ -71,7 +75,8 @@ defineProps<{ list: Home.GuessLikeDataItem[] }>()
     height: 304rpx;
   }
   .name {
-    display: box;
+    /* stylelint-disable-next-line value-no-vendor-prefix */
+    display: -webkit-box;
     overflow: hidden;
     margin: 10rpx 0;
     height: 75rpx;

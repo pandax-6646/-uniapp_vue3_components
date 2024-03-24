@@ -3,7 +3,6 @@ defineProps<{ list: Home.RecommendDataItem[] }>()
 </script>
 
 <template>
-  <!-- 推荐专区 -->
   <view class="panel hot">
     <view v-for="item in list" :key="item.id" class="item">
       <view class="title">
