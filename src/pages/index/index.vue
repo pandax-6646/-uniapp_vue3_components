@@ -4,6 +4,7 @@ import HomeNavbar from './components/HomeNavbar.vue'
 import HomeSwiper from './components/HomeSwiper.vue'
 import HomeCategory from './components/HomeCategory.vue'
 import HotRecommend from './components/HotRecommend.vue'
+import HomeSkeletonScreen from './components/HomeSkeletonScreen.vue'
 import home from '@/api/home'
 
 // 获取轮播图数据
@@ -84,26 +85,38 @@ onShow(() => {
 </script>
 
 <template>
+  <!-- 自定义导航栏 -->
+  <HomeNavbar />
+
   <PullUpList
     class="viewport"
     :on-scroll-to-lower="handleLoadMore"
     :load-status="loadStatus"
   >
     <template #list>
-      <!-- 自定义导航栏 -->
-      <HomeNavbar />
+      <!-- 骨架屏 -->
+      <HomeSkeletonScreen
+        v-if="
+          !bannerList.length &&
+          !categoryList.length &&
+          !recommendList.length &&
+          !guessLikeList.length
+        "
+      />
 
-      <!-- 轮播图 -->
-      <HomeSwiper :list="bannerList" />
+      <template v-else>
+        <!-- 轮播图 -->
+        <HomeSwiper :list="bannerList" />
 
-      <!-- 分类列表 -->
-      <HomeCategory :list="categoryList" />
+        <!-- 分类列表 -->
+        <HomeCategory :list="categoryList" />
 
-      <!-- 热门推荐 -->
-      <HotRecommend :list="recommendList" />
+        <!-- 热门推荐 -->
+        <HotRecommend :list="recommendList" />
 
-      <!-- 猜你喜欢 -->
-      <GuessLike :list="guessLikeList" />
+        <!-- 猜你喜欢 -->
+        <GuessLike :list="guessLikeList" />
+      </template>
     </template>
   </PullUpList>
 </template>
