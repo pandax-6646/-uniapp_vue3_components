@@ -150,10 +150,6 @@ npm run build:h5-production # 生产环境
 
 点击扩展，输入@recommended下载插件，安装后重启 vscode。
 
-**运行调试 app，提示 HBuilderX 版本和手机 sdk 版本不匹配：**
-
-项目依赖的 sdk 3.99 版本，检查 HBuilderX 版本不一致则需要 [下载HBuilderX 3.99 版本](https://hx.dcloud.net.cn/Tutorial/HistoryVersion)
-
 ## 常见问题
 
 ### vetur 提示组件引入报错
@@ -213,3 +209,13 @@ git 未安装或者是没有在 vs code 中配置环境变量
 **解决方法：**
 
 [VS Code 在 mac 和 windows 配置 git.path](https://bobbyhadz.com/blog/git-not-found-install-it-or-configure-it-in-vscode)
+
+### 运行调试 app，提示 HBuilderX 版本和手机 sdk 版本不匹配
+
+**原因：**
+
+项目依赖的 sdk 3.99 版本，检查 HBuilderX 版本不一致
+
+**解决方法：**
+
+需要 [下载HBuilderX 3.99 版本](https://hx.dcloud.net.cn/Tutorial/HistoryVersion)
