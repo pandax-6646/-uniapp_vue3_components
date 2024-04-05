@@ -19,9 +19,9 @@ function reject(err: { errno: number; errmsg: string }) {
 
             // 清除登录信息
             useStore('user').setUserInfo({
-              user_id: NaN,
+              id: '',
               token: ''
-            })
+            } as UserLogin.data)
           }, 2000)
         }
       })
@@ -66,10 +66,6 @@ function baseRequest(
       method,
       timeout: 60 * 1000,
       header: {
-        'Content-Type':
-          method === 'GET'
-            ? 'application/json; charset=utf-8'
-            : 'application/x-www-form-urlencoded',
         'source-client': getPlatformData(platform, platformData),
         Authorization: useStore('user').token.value
       },

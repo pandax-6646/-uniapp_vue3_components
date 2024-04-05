@@ -1,12 +1,9 @@
 {
   "globals": {
     "Http": true,
-    "GetTest": true,
-    "PostTest": true,
     "Types": true,
-    "Home": true,
-    "User": true,
     "Theme": true,
-    "UserLogin": true
+    "Home": true,
+    "User": true
   }
 }

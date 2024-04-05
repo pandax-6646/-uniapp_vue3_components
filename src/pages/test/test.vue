@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import apiTest from '@/api/apiTest'
 import { getCommonParams, setCommonParams } from '@/config/commonParams'
 import { useInit } from '@/hooks/useInit'
 import { useTitle } from '@/hooks/useTitle'
@@ -14,25 +13,6 @@ onLoad(() => {
 const { title, changeTitle } = useTitle()
 
 const { name, fullName, updateName } = useStore('test')
-
-async function getTest() {
-  const getTest = await apiTest.getTest({ a: 1 })
-  if (!getTest) {
-    uni.showToast({
-      title: '自定义异常处理'
-    })
-    return
-  }
-  // getTest.data?.age
-  // getTest.data?.name
-  console.log(getTest, 'getTest')
-}
-async function postTest() {
-  const postTest = await apiTest.postTest({ a: 1 })
-  if (!postTest) return
-  // postTest.data?.val
-  console.log(postTest, 'postTest')
-}
 
 function getCommonParam() {
   console.log(getCommonParams())
@@ -65,8 +45,6 @@ function onScroll() {
         <view @click="updateName('newName')">updateName</view>
         <view>title:{{ title }}</view>
         <view @click="changeTitle">changeTitle</view>
-        <view @click="getTest">getTest</view>
-        <view @click="postTest">postTest</view>
         <view @click="getCommonParam">getCommonParams</view>
         <view @click="setCommonParam">setCommonParams</view>
         <view @click="uniAsyncTest">uniAsyncTest</view>

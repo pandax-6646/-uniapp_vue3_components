@@ -1,4 +1,4 @@
-declare namespace UserLogin {
+declare namespace User {
   interface params {
     account: string;
     password: string;
