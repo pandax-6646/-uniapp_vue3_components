@@ -4,17 +4,6 @@
   "engines": {
     "node": ">=16.0.0"
   },
-  "lint-staged": {
-    "**/*.{html,vue,ts,cjs,json,md}": [
-      "prettier --write"
-    ],
-    "**/*.{vue,js,ts,jsx,tsx}": [
-      "eslint --fix"
-    ],
-    "**/*.{vue,css,scss,html}": [
-      "stylelint --fix"
-    ]
-  },
   "scripts": {
     "dev": "uni",
     "dev:mp-weixin": "uni -p mp-weixin",
@@ -24,14 +13,6 @@
     "build:mp-weixin": "uni build -p mp-weixin",
     "build:app-android": "uni build -p app-android",
     "build:app-ios": "uni build -p app-ios",
-    "lint": "npm run tsc && npm run eslint && npm run stylelint",
-    "tsc": "vue-tsc --noEmit --skipLibCheck",
-    "eslint": "eslint --ext .vue,.ts src/ --fix",
-    "stylelint": "stylelint \"src/**/*.(vue|scss|css)\" --fix",
-    "postinstall": "husky install",
-    "addPages": "node ./auto/addPage.ts",
-    "cz": "git add . && cz",
-    "tag": "npm version patch && git push && git push origin --tags",
     "dev:app": "uni -p app",
     "dev:custom": "uni -p",
     "dev:h5:ssr": "uni --ssr",
@@ -55,7 +36,14 @@
     "build:mp-toutiao": "uni build -p mp-toutiao",
     "build:quickapp-webview": "uni build -p quickapp-webview",
     "build:quickapp-webview-huawei": "uni build -p quickapp-webview-huawei",
-    "build:quickapp-webview-union": "uni build -p quickapp-webview-union"
+    "build:quickapp-webview-union": "uni build -p quickapp-webview-union",
+    "addPages": "node ./auto/addPage.ts",
+    "tsc": "vue-tsc --noEmit --skipLibCheck",
+    "eslint": "eslint --ext .vue,.ts src/ --fix",
+    "stylelint": "stylelint \"src/**/*.(vue|scss|css|html)\" --fix",
+    "lintAll": "npm run tsc && npm run eslint && npm run stylelint",
+    "postinstall": "husky install",
+    "cz": "git add . && cz"
   },
   "dependencies": {
     "@dcloudio/uni-app": "3.0.0-3090920231225001",

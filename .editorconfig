@@ -1,7 +1,7 @@
 # http://editorconfig.org
 root = true
 
-[*]
+[*] # 表示所有文件适用
 #缩进风格：空格
 indent_style = space
 #缩进大小2
@@ -15,7 +15,7 @@ trim_trailing_whitespace = true
 #是否在文件的最后插入一个空行
 insert_final_newline = true
 
-[*.md]
+[*.md] # 表示仅 md 文件适用以下规则
 trim_trailing_whitespace = false
 
 [Makefile]
