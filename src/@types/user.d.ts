@@ -1,19 +1,21 @@
 declare namespace UserLogin {
   interface params {
-    username: string;
+    account: string;
     password: string;
-    code: number;
-    codeKey: string;
-    type: number;
+    isLoading: boolean;
   }
+
   interface data {
-    code: string;
-    data: string;
-    datas: {
-      userName: string;
-      userNumber: string;
-      userToken: string;
-    };
-    msg: string;
+    id: string;
+    account: string;
+    mobile: string;
+    token: string;
+    avatar: string;
+    nickname: string;
+    gender: string;
+    birthday: string;
+    cityCode: string;
+    provinceCode: string;
+    profession: string;
   }
 }

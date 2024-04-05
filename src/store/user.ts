@@ -1,34 +1,52 @@
 export default defineStore({
   id: 'user',
+  persist: {
+    // 开启持久化
+    enabled: true,
+    H5Storage: window?.localStorage,
+    strategies: [
+      {
+        key: 'user',
+        storage: window?.sessionStorage,
+        paths: ['token']
+      }
+    ]
+  },
   state: () => {
     return {
       userInfo: {
         token: '',
-        user_id: NaN
+        id: '',
+        nickname: ''
       }
     } as {
-      userInfo: User.UserInfo
+      userInfo: UserLogin.data
     }
   },
   getters: {
     logged: (state) => {
-      const { token, user_id } = state.userInfo
-      return !!(token && user_id)
+      const { token, id } = state.userInfo
+      return !!(token && id)
     },
     token: (state) => {
       return state.userInfo.token
-    },
-    userId: (state) => {
-      return state.userInfo.user_id
     }
   },
   actions: {
-    setUserInfo(userInfo: User.UserInfo) {
+    setUserInfo(userInfo: UserLogin.data) {
       Object.assign(this.userInfo, userInfo)
     },
 
     setToken(token: string) {
       this.userInfo.token = token
+    },
+
+    clearUserInfo() {
+      this.userInfo = {
+        token: '',
+        id: '',
+        nickname: ''
+      } as UserLogin.data
     }
   }
 })
