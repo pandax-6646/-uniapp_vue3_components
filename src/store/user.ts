@@ -20,7 +20,7 @@ export default defineStore({
         nickname: ''
       }
     } as {
-      userInfo: UserLogin.data
+      userInfo: User.data
     }
   },
   getters: {
@@ -33,7 +33,7 @@ export default defineStore({
     }
   },
   actions: {
-    setUserInfo(userInfo: UserLogin.data) {
+    setUserInfo(userInfo: User.data) {
       Object.assign(this.userInfo, userInfo)
     },
 
@@ -46,7 +46,7 @@ export default defineStore({
         token: '',
         id: '',
         nickname: ''
-      } as UserLogin.data
+      } as User.data
     }
   }
 })

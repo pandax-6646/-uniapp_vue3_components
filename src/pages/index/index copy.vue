@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import user from '@/api/user'
 import { useTitle } from '@/hooks/useTitle'
 import { forward } from '@/utils/router'
 
@@ -10,18 +9,7 @@ function goTest() {
   })
 }
 
-const hanldeLogin = async () => {
-  const res = await user.login({
-    username: 'admin',
-    password:
-      '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92',
-    code: 9527,
-    codeKey: 'image_code_557a2f16c14843cf98b46d0cf7414268',
-    type: 2
-  })
-
-  console.log('返回数据', res)
-}
+const hanldeLogin = async () => {}
 
 const { style, schoolName, projectDesc, updateTheme } = useStore('theme')
 </script>
