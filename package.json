@@ -4,6 +4,17 @@
   "engines": {
     "node": ">=16.0.0"
   },
+  "lint-staged": {
+    "**/*.{html,vue,ts,cjs,json,md}": [
+      "prettier --write"
+    ],
+    "**/*.{vue,js,ts,jsx,tsx}": [
+      "eslint --fix"
+    ],
+    "**/*.{vue,css,scss,html}": [
+      "stylelint --fix"
+    ]
+  },
   "scripts": {
     "dev": "uni",
     "dev:mp-weixin": "uni -p mp-weixin",

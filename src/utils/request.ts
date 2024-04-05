@@ -21,7 +21,7 @@ function reject(err: { errno: number; errmsg: string }) {
             useStore('user').setUserInfo({
               id: '',
               token: ''
-            } as UserLogin.data)
+            } as User.data)
           }, 2000)
         }
       })
