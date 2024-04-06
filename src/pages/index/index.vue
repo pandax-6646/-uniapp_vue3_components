@@ -5,7 +5,7 @@ import HomeSwiper from './components/HomeSwiper.vue'
 import HomeCategory from './components/HomeCategory.vue'
 import HotRecommend from './components/HotRecommend.vue'
 import HomeSkeletonScreen from './components/HomeSkeletonScreen.vue'
-import { hideLoading, showLoading } from '@/config/serviceLoading'
+import { hideLoading, showLoading } from '@/utils/serviceLoading'
 import home from '@/api/home'
 
 // 获取轮播图数据

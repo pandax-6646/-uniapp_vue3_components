@@ -2,7 +2,7 @@ import { forward } from './router'
 import { getPlatformData } from './shared'
 import { isDevelopment, isH5, platform } from './platform'
 import env from '@/config/env'
-import { hideLoading, showLoading } from '@/config/serviceLoading'
+import { hideLoading, showLoading } from '@/utils/serviceLoading'
 
 function reject(err: { errno: number; errmsg: string }) {
   const { errmsg = '请求失败，请重试！', errno = -1 } = err

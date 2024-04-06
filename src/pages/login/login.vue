@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { hideLoading } from '@/config/serviceLoading'
+import { hideLoading } from '@/utils/serviceLoading'
 import { forward } from '@/utils/router'
 import user from '@/api/user'
 
