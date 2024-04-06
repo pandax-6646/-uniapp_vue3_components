@@ -17,8 +17,8 @@ export const UNI_APPID = 'H5871D791'
 // 微信小程序appid
 export const WX_APPID = 'wxa2abb91f64032a2b'
 
-// 主题颜色
-export const THEME = 'zd'
+// 默认主题颜色 'light' 或 'dark'
+export const DEFAULT_THEME = 'light'
 
 // 环境变量
 enum EnvMap {

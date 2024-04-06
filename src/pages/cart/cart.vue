@@ -1,7 +1,19 @@
-<script setup lang="ts" name="cart"></script>
+<script setup lang="ts" name="cart">
+import { useTheme } from '@/hooks/useTheme'
+const styleTheme = useTheme()
+
+const { updateTheme } = useStore('theme')
+</script>
 
 <template>
-  <view>购物车</view>
+  <view :style="styleTheme" class="cart" @tap="updateTheme">切换暗色主题</view>
 </template>
 
-<style scoped></style>
+<style scoped lang="scss">
+.cart {
+  margin: 50rpx auto;
+  background-color: var(--primary-color);
+  text-align: center;
+  color: var(--error-color);
+}
+</style>

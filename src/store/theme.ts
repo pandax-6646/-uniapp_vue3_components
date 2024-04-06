@@ -1,5 +1,6 @@
-import zdTheme from '@/skin/zd'
-import hyTheme from '@/skin/hy'
+import themes from '@/config/themes'
+import { DEFAULT_THEME } from '@/config/app'
+
 export default defineStore({
   id: 'theme',
   persist: {
@@ -8,40 +9,36 @@ export default defineStore({
   },
   state: () => {
     return {
-      themeInfo: {
-        style: {
-          '--primary-color': '#4285f4',
-          '--success-color': '#4cd964',
-          '--warning-color': '#ffa54e',
-          '--error-color': '#fe6079'
-        },
-        schoolName: '默认学校',
-        projectDesc: '默认系统名称'
-      }
-    } as {
-      themeInfo: Theme.ThemeInfo
+      theme: themes[DEFAULT_THEME] as Theme,
+      themeTarget: DEFAULT_THEME
     }
   },
   getters: {
-    style: (state) => {
-      return state.themeInfo.style
+    navBar: (state) => {
+      return state.theme.navBar
     },
-    schoolName: (state) => {
-      return state.themeInfo.schoolName
+    tabBar: (state) => {
+      return state.theme.tabBar
     },
-    projectDesc: (state) => {
-      return state.themeInfo.projectDesc
+    main: (state) => {
+      return state.theme.main
     }
   },
   actions: {
-    updateTheme(APP_SCHOOL: string) {
-      let theme: Theme.ThemeInfo = this.themeInfo
-      if (APP_SCHOOL === 'zd') {
-        theme = zdTheme
-      } else if (APP_SCHOOL === 'hy') {
-        theme = hyTheme
-      }
-      Object.assign(this.themeInfo, theme)
+    updateTheme() {
+      const theme = themes[this.themeTarget]
+
+      // Object.assign(this.theme, theme)
+
+      console.log('测试数据', this.themeTarget, theme)
+
+      // // 设置导航栏颜色
+      // uniAsync.setNavigationBarColor(theme.navBar)
+
+      // // 设置tabbar
+      // uniAsync.setTabBarStyle(theme.tabBar)
+
+      this.themeTarget = this.themeTarget === 'light' ? 'dark' : 'light'
     }
   }
 })

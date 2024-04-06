@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" name="index">
 import { onLoad } from '@dcloudio/uni-app'
 import HomeNavbar from './components/HomeNavbar.vue'
 import HomeSwiper from './components/HomeSwiper.vue'
