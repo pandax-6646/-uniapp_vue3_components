@@ -8,6 +8,8 @@ import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
 
 import env from './src/config/env'
+import { LOCAL_PORT } from './src/config/app'
+require('./src/utils/modifyManifest.js')
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -42,12 +44,10 @@ export default defineConfig({
     Unocss()
   ],
   server: {
-    port: 3000,
-    open: true, // 自动打开
-    base: './ ', // 生产环境路径
+    port: LOCAL_PORT,
+    open: true, // 本地运行时 ,自动在浏览器中打开应用程序
     proxy: {
-      // 本地开发环境通过代理实现跨域，生产环境使用 nginx 转发
-      // 正则表达式写法
+      // 本地通过代理实现跨域，生产环境使用 nginx 转发
       '^/api': {
         target: env.apiBaseUrl, // 后端服务实际地址
         changeOrigin: true, // 开启代理

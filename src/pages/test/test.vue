@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { getCommonParams, setCommonParams } from '@/config/commonParams'
+// import { getCommonParams, setCommonParams } from '@/config/commonParams'
 import { useInit } from '@/hooks/useInit'
 import { useTitle } from '@/hooks/useTitle'
 import { onUrlPage } from '@/utils/router'
@@ -15,10 +15,10 @@ const { title, changeTitle } = useTitle()
 const { name, fullName, updateName } = useStore('test')
 
 function getCommonParam() {
-  console.log(getCommonParams())
+  // console.log(getCommonParams())
 }
 function setCommonParam() {
-  setCommonParams({ channel: 'test' })
+  // setCommonParams({ channel: 'test' })
   getCommonParam()
 }
 

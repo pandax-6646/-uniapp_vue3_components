@@ -1,10 +1,17 @@
-const apiEnv: ApiEnv = 'dev'
+import { NODE_ENV } from './app'
+const apiEnv: ApiEnv = NODE_ENV
 
 const envMap = {
-  dev: {
+  // 开发环境
+  development: {
     apiBaseUrl: 'https://pcapi-xiaotuxian-front-devtest.itheima.net'
   },
-  prod: {
+  // 测试环境
+  test: {
+    apiBaseUrl: 'https://pcapi-xiaotuxian-front-devtest.itheima.net'
+  },
+  // 生产环境
+  production: {
     apiBaseUrl: 'https://pcapi-xiaotuxian-front.itheima.net'
   }
 }
@@ -19,4 +26,5 @@ function createEnv(apiEnv: ApiEnv): Env<typeof apiEnv> {
 }
 
 const env = createEnv(apiEnv)
+
 export default env
