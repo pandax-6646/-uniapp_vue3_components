@@ -10,7 +10,7 @@ export default defineStore({
   state: () => {
     return {
       theme: themes[DEFAULT_THEME] as Theme,
-      themeTarget: DEFAULT_THEME
+      themeTemp: DEFAULT_THEME
     }
   },
   getters: {
@@ -26,19 +26,15 @@ export default defineStore({
   },
   actions: {
     updateTheme() {
-      const theme = themes[this.themeTarget]
+      this.themeTemp = this.themeTemp === 'light' ? 'dark' : 'light'
+      const theme = themes[this.themeTemp]
 
-      // Object.assign(this.theme, theme)
+      // 设置导航栏颜色
+      uni.setNavigationBarColor(theme.navBar)
 
-      console.log('测试数据', this.themeTarget, theme)
-
-      // // 设置导航栏颜色
-      // uniAsync.setNavigationBarColor(theme.navBar)
-
-      // // 设置tabbar
-      // uniAsync.setTabBarStyle(theme.tabBar)
-
-      this.themeTarget = this.themeTarget === 'light' ? 'dark' : 'light'
+      // 设置tabbar
+      uni.setTabBarStyle(theme.tabBar)
+      this.theme = theme
     }
   }
 })
