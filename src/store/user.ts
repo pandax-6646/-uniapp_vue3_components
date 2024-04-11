@@ -2,15 +2,7 @@ export default defineStore({
   id: 'user',
   persist: {
     // 开启持久化
-    enabled: true,
-    H5Storage: window?.localStorage,
-    strategies: [
-      {
-        key: 'user',
-        storage: window?.sessionStorage,
-        paths: ['token']
-      }
-    ]
+    enabled: true
   },
   state: () => {
     return {
